@@ -131,8 +131,8 @@ contract WapPair is IWapPair {
     uint public override price0CumulativeLast;
     uint public override price1CumulativeLast;
     uint public override kLast; // reserve0 * reserve1, as of immediately after the most recent liquidity event
-    uint public platform_rate = 10; // 团队手续费比例，以万为基础
-    uint public lp_rate = 10;  // 流动性提供者手续费比例，以万为基础
+    uint public platform_rate = 20; // 团队手续费比例，以万为基础
+    uint public lp_rate = 0;  // 流动性提供者手续费比例，以万为基础
 
     uint private unlocked = 1;
     modifier lock() {

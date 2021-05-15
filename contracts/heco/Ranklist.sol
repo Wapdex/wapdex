@@ -9,8 +9,10 @@ import "../interface/IERC20.sol";
 import "../library/SafeMath.sol";
 import "../interface/IWapFactory.sol";
 import "../interface/IWapPair.sol";
-import "../interface/IWap.sol";
 
+interface IWap is IERC20 {
+    function mint(address to, uint256 amount) external returns (bool);
+}
 
 contract Ranklist is Ownable {
     struct UserInfo {

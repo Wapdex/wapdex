@@ -7,7 +7,10 @@ import "@openzeppelin/contracts/utils/EnumerableSet.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
-import "../interface/IWap.sol";
+
+interface IWap is IERC20 {
+    function mint(address to, uint256 amount) external returns (bool);
+}
 
 interface IMasterChefHeco {
     function pending(uint256 pid, address user) external view returns (uint256);
