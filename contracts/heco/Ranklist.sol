@@ -39,7 +39,7 @@ contract Ranklist is Ownable {
     // 用户数据
     mapping(address => UserInfo) public userinfo;
 
-    uint limit_usdt = 0;  // 用户兑换相应代币，换算成USDT，可以上榜的最少USDT数量，18个小数位
+    uint public limit_usdt = 0;  // 用户兑换相应代币，换算成USDT，可以上榜的最少USDT数量，18个小数位
     address public router;
     IWapFactory public factory;
     IWap public wap;
@@ -120,9 +120,6 @@ contract Ranklist is Ownable {
         require(tokenA != address(0), "Ranklist: zero address");
         require(tokenB != address(0), "Ranklist: zero address");
         require(price_addr != address(0), "Ranklist: zero address");
-        if (EnumerableSet.length(pairset) >= max_num) {
-            return;
-        }
 
         address pair = factory.getPair(tokenA, tokenB);
         require(pair != address(0), "Ranklist: no pair");

@@ -90,8 +90,10 @@ contract HecoPool is Ownable {
     }
 
     // Set the number of wap produced by each block
-    function setWapPerBlock(uint256 _newPerBlock) public onlyOwner {
-        massUpdatePools();
+    function setWapPerBlock(uint256 _newPerBlock, bool _withUpdate) public onlyOwner {
+        if (_withUpdate) {
+            massUpdatePools();
+        }
         wapPerBlock = _newPerBlock;
     }
 
@@ -101,7 +103,7 @@ contract HecoPool is Ownable {
 
     function poolArray(uint page, uint number) external view returns (PoolInfo[10] memory lists) {
         uint j = 0;
-        for (uint256 i = page * number; i < poolInfo.length && i < number; i++) {
+        for (uint256 i = page * number; i < poolInfo.length && j < number && j < 10; i++) {
             PoolInfo memory tmp = poolInfo[i];
             lists[j] = tmp;
             j++;
